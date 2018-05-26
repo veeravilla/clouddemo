@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +23,8 @@ import com.test.springdemo.entity.Student;
 @RestController
 @RequestMapping("/v1/api")
 public class StudentController {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private StudentRepository studentRepository;
@@ -28,12 +32,14 @@ public class StudentController {
 	// Get All Students
 	@GetMapping("/students")
 	public List<Student> getAllStudents() {
+		logger.info(" >>>>>>>>>>>>>>>>>>>>> Fetch All Student Records    ");
 		return studentRepository.findAll();
 	}
 
 	// Create a new Student
 	@PostMapping("/student")
 	public Student addStudent(@Valid @RequestBody Student student) {
+		logger.info(" >>>>>>>>>>>>>>>>>>>>> Adding New Student Record    " + student);
 		return studentRepository.save(student);
 	}
 
