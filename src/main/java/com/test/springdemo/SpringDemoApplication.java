@@ -21,6 +21,7 @@ public class SpringDemoApplication {
 		SpringApplication.run(SpringDemoApplication.class, args);
 	}
 	
+	//Swagger Documentation.
 	@Bean
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
